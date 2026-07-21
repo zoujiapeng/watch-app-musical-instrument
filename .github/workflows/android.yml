@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: android-${{ github.workflow }}-${{ github.ref }}
@@ -16,29 +16,12 @@ concurrency:
 
 jobs:
   build:
-    name: Bootstrap, test, lint, and build APKs
+    name: Test, lint, and build APKs
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 25
     steps:
       - name: Check out source
         uses: actions/checkout@v6
-
-      - name: Expand source package
-        id: bootstrap
-        shell: bash
-        run: |
-          if compgen -G ".bootstrap/source.part.*" > /dev/null; then
-            cat .bootstrap/source.part.* > /tmp/watch-source.tar.xz
-            echo "4c7d5c1eaece688fbddac16111fa1ec96c9cfe52e0e1bbd9ab287933bd3ba19c  /tmp/watch-source.tar.xz" | sha256sum -c -
-            tar -xJf /tmp/watch-source.tar.xz
-            rm -rf .bootstrap
-            chmod +x gradlew
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "feat: add complete OPPO Watch instrument application"
-            git push
-          fi
 
       - name: Set up JDK 17
         uses: actions/setup-java@v5
