@@ -39,9 +39,24 @@ jobs:
           test -x "$ANDROID_HOME/build-tools/35.0.0/aapt2"
 
       - name: Unit tests, lint, and APK builds
-        run: >-
-          ./gradlew --no-daemon --stacktrace
-          testDebugUnitTest lintDebug assembleDebug assembleRelease
+        shell: bash
+        run: |
+          mkdir -p build
+          set -o pipefail
+          ./gradlew --no-daemon --stacktrace \
+            testDebugUnitTest lintDebug assembleDebug assembleRelease \
+            2>&1 | tee build/ci-gradle.log
+
+      - name: Upload CI diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: watch-instruments-ci-diagnostics
+          path: |
+            build/ci-gradle.log
+            app/build/reports/
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Generate APK checksums
         shell: bash
