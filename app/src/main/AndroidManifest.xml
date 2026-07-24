@@ -3,7 +3,7 @@
 
     <uses-feature
         android:name="android.hardware.type.watch"
-        android:required="false" />
+        android:required="true" />
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="true" />
