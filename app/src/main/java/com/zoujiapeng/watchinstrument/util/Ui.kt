@@ -35,8 +35,8 @@ fun Context.watchText(
 
 fun Context.watchButton(
     text: CharSequence,
-    onClick: (View) -> Unit,
     danger: Boolean = false,
+    onClick: (View) -> Unit,
 ): Button = Button(this).apply {
     this.text = text
     isAllCaps = false
