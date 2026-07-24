@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -117,7 +118,7 @@ class RecordingsActivity : BaseWatchActivity() {
                     }
                     addView(
                         listContainer,
-                        ScrollView.LayoutParams(
+                        FrameLayout.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT,
                         ),
@@ -180,7 +181,7 @@ class RecordingsActivity : BaseWatchActivity() {
                         LinearLayout.LayoutParams(0, dp(40f), 1f).apply { marginEnd = dp(6f) },
                     )
                     addView(
-                        watchButton(getString(R.string.delete), { confirmDelete(recording) }, danger = true),
+                        watchButton(getString(R.string.delete), danger = true) { confirmDelete(recording) },
                         LinearLayout.LayoutParams(0, dp(40f), 1f),
                     )
                 },
