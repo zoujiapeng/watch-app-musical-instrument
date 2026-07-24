@@ -105,7 +105,12 @@ class MetronomeScreenView(
         paint.typeface = Typeface.DEFAULT
         paint.color = Color.rgb(115, 122, 137)
         paint.textSize = context.dp(9f).toFloat()
-        canvas.drawText(context.getString(R.string.crown_hint), width / 2f, height - context.dp(8f), paint)
+        canvas.drawText(
+            context.getString(R.string.crown_hint),
+            width / 2f,
+            height.toFloat() - context.dp(8f),
+            paint,
+        )
     }
 
     private fun layoutRects() {
