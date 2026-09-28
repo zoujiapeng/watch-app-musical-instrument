@@ -1,5 +1,8 @@
 # 腕上乐坊（Watch Instruments）
 
+[![Android CI](https://github.com/zoujiapeng/watch-app-musical-instrument/actions/workflows/android.yml/badge.svg)](https://github.com/zoujiapeng/watch-app-musical-instrument/actions/workflows/android.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 为 OPPO Watch 3 Pro 优先适配的离线 Android 乐器应用。目标画布为 378 × 496 px，界面采用按屏幕比例计算的单列触控布局，并保留曲面屏边缘安全区。
 
 应用不是播放预制音效的界面原型。声音由本地实时音频引擎生成，支持多点触控、复音、延音、表冠调节、节拍器、演奏事件录制、作品回放和持久化设置。
@@ -105,3 +108,7 @@ adb shell getprop ro.build.version.sdk
 ## 隐私
 
 应用没有网络权限，不采集麦克风音频，并关闭 Android 云备份。作品仅以音符事件形式保存在手表的应用私有目录。详见 [`PRIVACY.md`](PRIVACY.md)。
+
+## 许可证
+
+本项目采用 [MIT 许可证](LICENSE)。欢迎贡献，请先阅读 [`CONTRIBUTING.md`](CONTRIBUTING.md)。
